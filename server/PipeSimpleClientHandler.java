@@ -57,7 +57,6 @@ public class PipeSimpleClientHandler implements ClientHandler {
         			"1,2,1\r\n" + 
         			"1,0,1\r\n" + 
         			"2,7,2";
-        	solvedLevel="";
 	
 	        try {
 				cacheManager.save(solvedLevel);
