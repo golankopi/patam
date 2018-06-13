@@ -23,7 +23,7 @@ public class Matrix implements Problem {
 		if(rows <= 0 || cols <= 0)
 			throw new MatrixException("Problem initiate matrix becuse of file missmatch rows:"+rows + " cols:"+ cols );
 		
-		char[][] matrix = new char[rows][cols];
+		this.matrix = new char[rows][cols];
 		for(int i = 0; i < rows; i++)
 		{
 			String line = spllitedLevel[i];
@@ -31,14 +31,16 @@ public class Matrix implements Problem {
 				throw new MatrixException("Problem initiate matrix (line is null Problem) line:" + i); 
 			for(int j = 0; j < cols; j++)
 			{
-				matrix[i][j] = line.charAt(j);
+				System.out.println("got a char of "+ line.charAt(j));
+				this.matrix[i][j] = line.charAt(j);
 			}
 		}
-		this.matrix = matrix;
 		start = findStartLocation(this.matrix, rows, cols);
 		end = findEndLocation(this.matrix, rows, cols);
-		//start.print();
-		//end.print();
+		
+		System.out.println("BEFORE CONSTUCTOR END: ");
+		start.print();
+		end.print();
 	}
 
 	public Matrix(File file) throws MatrixException
@@ -105,7 +107,7 @@ public class Matrix implements Problem {
 			for(int j =0 ; j < cols; j++)
 			{
 				if(matrix[i][j] == 's')
-					return new Location(i,j);
+					return new Location(i,j,'s');
 			}
 			//System.out.println("");
 		}
@@ -119,7 +121,7 @@ public class Matrix implements Problem {
 			for(int j =0 ; j < cols; j++)
 			{
 				if(matrix[i][j] == 'g')
-					return new Location(i,j);
+					return new Location(i,j,'g');
 			}
 			//System.out.println("");
 		}

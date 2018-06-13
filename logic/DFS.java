@@ -15,20 +15,22 @@ public class DFS implements Searcher {
 	@Override
 	public ArrayList<State> search(Searchable searchable) {
 		System.out.println("Starting DFS");
-		visited = new HashSet<String>();
+		//visited = new HashSet<String>();
 		open = new Stack<State>();
-		open.push(searchable.getInitialState());
+		State st = searchable.getInitialState();
+		st.setVisited(true);
+		open.push(st);
 		
 		while(!open.isEmpty())
 		{
 			State v = open.pop();
-			visited.add(v.toString());
+			//visited.add(v.toString());
 			System.out.println("adding to Visited list: " + v.toString());
-			
+			//v.setVisited(true);
 			System.out.println("This is V that we poped");
 			v.print();
-			if(!visited.contains(v))
-			{
+		//	if(!visited.contains(v))
+			//{
 				if(searchable.isGoal(v))
 				{
 					System.out.println("done! goal");
@@ -37,10 +39,11 @@ public class DFS implements Searcher {
 				ArrayList<State> list = new ArrayList<State>();
 				list = v.getNeighbors();
 				System.out.println("This is v's neighbors");
-				
+				v.setVisited(true);
 				for(State s:list)
 				{
-					if(!visited.contains(s.toString())){
+					//if(!visited.contains(s.toString()))
+					if(s.isVisited()!=true && s!=null){
 						s.setCameFrom(v);
 						System.out.println("p: " + v.getLocation().toString());
 						open.push(s);
@@ -48,7 +51,7 @@ public class DFS implements Searcher {
 					}
 				}
 			}
-		}
+		
 		
 		return null;
 	}

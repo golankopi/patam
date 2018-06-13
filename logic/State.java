@@ -10,7 +10,16 @@ public class State {
 	private double cost = 0;
 	private State cameFrom;	
 	Location location;
+	private boolean visited=false;
 	
+	public boolean isVisited() {
+		return visited;
+	}
+
+	public void setVisited(boolean visited) {
+		this.visited = visited;
+	}
+
 	public State(Matrix state){ // CTOR for first state
 		try {
 			this.state = new Matrix(state);

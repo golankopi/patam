@@ -18,6 +18,7 @@ public class PGS implements Solver{
 	@Override
 	public Solution solve(Problem problem) {
 		State s = new State((Matrix) problem);
+		
 		s.print();
 		System.out.println("**************Starting PGS*****************");
 		System.out.println("**************Starting PGS BFS*****************");
@@ -28,11 +29,11 @@ public class PGS implements Solver{
 		ArrayList<State> list2 = new DFS().search(new PipeSearchable(s));
 
 		System.out.println("**************PGS BFS*****************");
-		//printList(list);
+		printList(list);
 		System.out.println("**************PGS DFS*****************");
-		//printList(list2);
+		printList(list2);
 		
-		Solution ps = new PipeSolution(list,s);
+		Solution ps = new PipeSolution(list2,s);
 		return ps;
 	}
 

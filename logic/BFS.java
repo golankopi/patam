@@ -96,16 +96,16 @@ public class BFS implements Searcher {
  	
   	public static void main(String[]args)
 	{
-		File file = new File("C:\\test\\level1.txt");
-		File file2 = new File("C:\\test\\level2.txt");
-		File file3 = new File("C:\\test\\level3.txt");
+		File file = new File("C:\\temp\\level1.txt");
+		//File file2 = new File("C:\\test\\level2.txt");
+		//File file3 = new File("C:\\test\\level3.txt");
 
 	    try {
-			Matrix mat = new Matrix(file3);
+			Matrix mat = new Matrix(file);
 			//mat.print();
-			Matrix mat2 = new Matrix(file2);
+			//Matrix mat2 = new Matrix(file2);
 			State s = new State(mat);
-			State t = new State(mat2);
+			//State t = new State(mat2);
 			//System.out.println(s.equals(t));
 			//System.out.println(s.toString());
 			PipeSearchable ps = new PipeSearchable(s);

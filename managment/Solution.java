@@ -1,5 +1,7 @@
 package managment;
 
-public interface Solution {
+import java.util.ArrayList;
 
+public interface Solution {
+	public ArrayList<String> getSolutionList();
 }

@@ -1,17 +1,26 @@
 package server;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import exceptions.MatrixException;
 import logic.Matrix;
+import logic.Problem;
 import managment.CacheManager;
 import managment.FileCacheManager;
+import managment.PGS;
+import managment.Solution;
 import managment.Solver;
-import exceptions.*;
-
-import java.io.*;
-import java.util.*;
 
 public class PipeSimpleClientHandler implements ClientHandler {
 	
 	private CacheManager cacheManager;
 	private Solver solver;
+	private Solution solution;
 	
 	@Override
 	public void handle(InputStream is, OutputStream os)  {
@@ -33,7 +42,7 @@ public class PipeSimpleClientHandler implements ClientHandler {
         System.out.println(lines);
         level = String.join(System.lineSeparator(), lines);
         //TODO change to a problem intead of matrix
-    	Matrix m;
+    	Problem m;
 		try {
 			m = new Matrix(level);
 		} catch (MatrixException e2) {
@@ -50,13 +59,10 @@ public class PipeSimpleClientHandler implements ClientHandler {
 		}
         
         if (solvedLevel == null) {
-        	//TODO solve and use solution.toString();
-        	solvedLevel = "0,7,2\r\n" + 
-        			"1,7,3\r\n" + 
-        			"1,5,1\r\n" + 
-        			"1,2,1\r\n" + 
-        			"1,0,1\r\n" + 
-        			"2,7,2";
+        	solver = new PGS();
+        	solution = solver.solve(m);       	
+        	solvedLevel = String.join(System.lineSeparator(), solution.getSolutionList());
+
 	
 	        try {
 				cacheManager.save(solvedLevel);
