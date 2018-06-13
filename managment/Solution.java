@@ -1,4 +1,4 @@
-package logic;
+package managment;
 
 public interface Solution {
 

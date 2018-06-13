@@ -3,13 +3,31 @@ package logic;
 public class Location {
 	private int i;
 	private int j;
+	private char value;
 	
+	public Location(int i,int j,char value)
+	{
+		this.i = i;
+		this.j = j;
+		this.value = value;
+	}
+	public Location(Location loc)
+	{
+		this.i = loc.i;
+		this.j = loc.j;
+		this.value = loc.value;
+	}
 	public Location(int i,int j)
 	{
 		this.i = i;
 		this.j = j;
 	}
-
+	public char getValue() {
+		return value;
+	}
+	public void setValue(char value) {
+		this.value = value;
+	}
 	public int getI() {
 		return i;
 	}
@@ -28,6 +46,18 @@ public class Location {
 	
 	public void print()
 	{
-		System.out.println("["+getI()+","+getJ()+"]");
+		System.out.println("["+this.getI()+","+this.getJ()+"] and thier value=" + this.value);
 	}
+	
+	@Override
+	public String toString()
+	{
+		return "["+this.getI()+","+this.getJ()+"] and thier value=" + this.value;
+	}
+	
+	public Location getStart(Matrix state) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

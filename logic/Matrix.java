@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
 import exceptions.MatrixException;
-import util.FileHandler;
+import util.PipeMatrixConverter;
 
 public class Matrix implements Problem {
 	private int rows;
@@ -16,7 +16,6 @@ public class Matrix implements Problem {
 	private Location start;
 	private Location end;
 	private char[][]matrix = null;
-	
 	public Matrix(String level) throws MatrixException {
 		String[] spllitedLevel = level.split(System.lineSeparator());
 		rows = spllitedLevel.length;
@@ -41,35 +40,64 @@ public class Matrix implements Problem {
 		//start.print();
 		//end.print();
 	}
-	
-	public int getRows() {
-		return rows;
-	}
 
-	public void setRows(int rows) {
-		this.rows = rows;
-	}
-
-	public int getCols() {
-		return cols;
-	}
-
-	public void setCols(int cols) {
-		this.cols = cols;
-	}
-
-	public void printMatrix()
+	public Matrix(File file) throws MatrixException
 	{
-		for(int i =0 ; i < this.rows; i++)
+		
+		PipeMatrixConverter pmc = new PipeMatrixConverter();
+		this.matrix = pmc.convert(file);
+		this.rows = pmc.getRows();
+		this.cols = pmc.getCols();
+		this.setStart(pmc.findStartLocation(matrix, rows, cols));
+		this.setEnd(pmc.findEndLocation(matrix, rows, cols));
+	}
+	
+	public Matrix(char[][] matrix2) {
+		for(int i = 0; i < rows; i++)
 		{
-			for(int j =0 ; j < this.cols; j++)
+			for(int j = 0; j < cols; j++)
 			{
-				System.out.print(this.matrix[i][j]);
+				this.matrix[i][j] = matrix2[i][j];
 			}
-			System.out.println("");
 		}
 	}
+	public Matrix(Matrix mat) throws MatrixException {
+		this.rows = mat.getRows();
+		this.cols = mat.getCols();
+		if(rows <= 0 || cols <= 0)
+			throw new MatrixException("Problem initiate matrix becuse of file missmatch rows:"+rows + " cols:"+ cols );
+		
+		this.matrix = new char[rows][cols];
+		//System.out.println(rows);
+		//System.out.println(cols);
+		//System.out.println(mat.matrix[0][1]);
+		for(int i = 0; i < this.rows; i++)
+		{
+			for(int j = 0; j < this.cols; j++)
+			{
+				//System.out.println(i + "   " + j);
+				//System.out.println(mat.matrix[i][j]);
+				this.matrix[i][j] = mat.matrix[i][j];
+			}
+		}
+		this.setEnd(mat.getEnd());
+		this.setStart(mat.getStart());
+	}
+
+	public boolean equals(Matrix mat)
+	{
+		for(int i = 0; i < this.rows; i++)
+		{
+			for(int j = 0; j < this.cols; j++)
+			{
+				if(!(this.matrix[i][j] == mat.matrix[i][j]))
+					return false;
+			}
+		}
+		return true;
+	}
 	
+
 	public Location findStartLocation(char[][] matrix,int rows,int cols)
 	{
 		for(int i =0 ; i < rows; i++)
@@ -97,25 +125,81 @@ public class Matrix implements Problem {
 		}
 		return null;
 	}
-	//test main FileHandler
+	public char getValue(int i , int j)
+	{
+		return matrix[i][j];
+	}	
+	
+	public int getRows() {
+		return rows;
+	}
+
+	public void setRows(int rows) {
+		this.rows = rows;
+	}
+
+	public int getCols() {
+		return cols;
+	}
+
+	public void setCols(int cols) {
+		this.cols = cols;
+	}
+
+	public void printMatrix(char[][] matrix,int rows,int cols)
+	{
+		for(int i =0 ; i < rows; i++)
+		{
+			for(int j =0 ; j < cols; j++)
+			{
+				System.out.print(matrix[i][j]);
+			}
+			System.out.println("");
+		}
+	}
+	
+	public void setLocation(Location location) {
+		//location.print();
+		matrix[location.getI()][location.getJ()] = location.getValue(); 
+	}
+	
+	
+	@Override
+	public void print() {
+		printMatrix(matrix, rows, cols);
+	}
+	
+
+
+	public Location getEnd() {
+		return end;
+	}
+
+	public void setEnd(Location end) {
+		this.end = end;
+	}
+
+	public Location getStart() {
+		return start;
+	}
+
+	public void setStart(Location start) {
+		this.start = start;
+	}
+
 	public static void main(String[]ags)
 	{
 	    File file = new File("C:\\test\\level1.txt");
-//	    try {
-//			Matrix mat = new Matrix(file);
-//			mat.print();
-//		} catch (MatrixException e) {
-//			// TODO Auto-generated catch block
-//			e.PrintErrorMSG();
-//		}
+	    try {
+			Matrix mat = new Matrix(file);
+			mat.print();
+			Matrix mat2 = new Matrix(mat);
+		} catch (MatrixException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	@Override
-	public void print() {
-		printMatrix();
-		
-	}
-	
 	@Override
 	public String toString() {
 		String[] rowsArr = new String[rows];
@@ -144,4 +228,6 @@ public class Matrix implements Problem {
 			return "foo";
 		}
 	}
+
 }
+

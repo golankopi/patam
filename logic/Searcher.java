@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.ArrayList;
+
 public interface Searcher {
-	public Solution search(Searchable searchable); 
+	public ArrayList<State> search(Searchable searchable); 
 }
