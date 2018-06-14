@@ -28,9 +28,12 @@ public class BFS implements Searcher {
 			State n = open.poll();
 			System.out.println("we pooled n from q");
 			n.print();
-			
+
 			System.out.println("!closed.contains(n.toString()) : " + !closed.contains(n.toString()));
-			if(!closed.contains(n.toString())){
+			if(!closed.contains(n.toString() ) || !n.isVisited()){
+				//closed.add(n.toString());
+				n.setVisited(true);
+
 				if(searchable.isGoal(n)) //3 
 				{
 					n.getLocation().print();
@@ -54,6 +57,7 @@ public class BFS implements Searcher {
 						System.out.println("adding s: " + s.toString());
 					}
 				}
+				
 			}
 		}
 		System.out.println("BFS done!");
@@ -74,7 +78,7 @@ public class BFS implements Searcher {
 			{
 				s1.print();
 				try{
-					System.out.print("p:");
+					System.out.println("p:");
 					s1.getCameFrom().getLocation().print();
 				}catch(Exception e){}
 			}
@@ -96,16 +100,16 @@ public class BFS implements Searcher {
  	
   	public static void main(String[]args)
 	{
-		File file = new File("C:\\temp\\level1.txt");
-		//File file2 = new File("C:\\test\\level2.txt");
-		//File file3 = new File("C:\\test\\level3.txt");
+		File file = new File("C:\\test\\level4.txt");
+		File file2 = new File("C:\\test\\level2.txt");
+		File file3 = new File("C:\\test\\level3.txt");
 
 	    try {
 			Matrix mat = new Matrix(file);
 			//mat.print();
-			//Matrix mat2 = new Matrix(file2);
+			Matrix mat2 = new Matrix(file2);
 			State s = new State(mat);
-			//State t = new State(mat2);
+			State t = new State(mat2);
 			//System.out.println(s.equals(t));
 			//System.out.println(s.toString());
 			PipeSearchable ps = new PipeSearchable(s);

@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import exceptions.MatrixException;
 import util.Dictionary;
@@ -10,15 +11,8 @@ public class State {
 	private double cost = 0;
 	private State cameFrom;	
 	Location location;
-	private boolean visited=false;
-	
-	public boolean isVisited() {
-		return visited;
-	}
-
-	public void setVisited(boolean visited) {
-		this.visited = visited;
-	}
+	private boolean visited = false;
+	private HashSet<String> fathers ; // a set of states already evaluated
 
 	public State(Matrix state){ // CTOR for first state
 		try {
@@ -26,6 +20,8 @@ public class State {
 		} catch (MatrixException e) {e.printStackTrace();}
 		this.location = new Location(state.getStart().getI(),state.getStart().getJ(),state.getStart().getValue())  ;
 		this.cameFrom = null;
+		fathers = new HashSet<String>();
+		
 	}
 
 	public State(State s,Location newlocation){ // CTOR for first state
@@ -38,6 +34,7 @@ public class State {
 		
 		this.location = new Location(newlocation.getI(),newlocation.getJ(),newlocation.getValue());
 		state.setLocation(newlocation);
+		fathers = new HashSet<String>(s.fathers);
 		//this.setCameFrom(s);
 	}
 	
@@ -57,21 +54,26 @@ public class State {
 		if(!(myParent.equals('d')))down = getPosibleDown();
 		if(!(myParent.equals('l')))left = getPosibleLeft();
 		if(!(myParent.equals('r')))right = getPosibleRight();
+		System.out.println(fathers.toString());
 		for(State s : up)
 		{
-			list.add(s);
+			if(!fathers.contains(s.toString()))
+				list.add(s);
 		}
 		for(State s : down)
 		{
-			list.add(s);
+			if(!fathers.contains(s.toString()))
+				list.add(s);
 		}
 		for(State s : left)
 		{
-			list.add(s);
+			if(!fathers.contains(s.toString()))
+				list.add(s);
 		}
 		for(State s : right)
 		{
-			list.add(s);
+			if(!fathers.contains(s.toString()))
+				list.add(s);
 		}
 		return list;
 	} 
@@ -291,6 +293,7 @@ public class State {
 
 	public void setCameFrom(State cameFrom) {
 		this.cameFrom = cameFrom;
+		this.fathers.add(cameFrom.toString());
 	}
 
 	public Location getLocation() {
@@ -305,6 +308,14 @@ public class State {
 	{
 		state.print();
 		location.print();
+	}
+
+	public boolean isVisited() {
+		return visited;
+	}
+
+	public void setVisited(boolean visited) {
+		this.visited = visited;
 	}
 	
 }
