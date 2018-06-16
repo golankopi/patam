@@ -78,8 +78,8 @@ public class DFS implements Searcher {
 			Matrix mat = new Matrix(file3);
 			//mat.print();
 			Matrix mat2 = new Matrix(file2);
-			State s = new State(mat);
-			State t = new State(mat2);
+			State s = new PipeState(mat);
+			State t = new PipeState(mat2);
 			//System.out.println(s.equals(t));
 			//System.out.println(s.toString());
 			PipeSearchable ps = new PipeSearchable(s);

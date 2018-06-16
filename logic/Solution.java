@@ -1,4 +1,4 @@
-package managment;
+package logic;
 
 import java.util.ArrayList;
 

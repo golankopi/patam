@@ -9,15 +9,18 @@ import logic.BFS;
 import logic.DFS;
 import logic.Matrix;
 import logic.PipeSearchable;
+import logic.PipeSolution;
 import logic.Problem;
+import logic.Solution;
 import logic.State;
+import logic.PipeState;
 
 public class PGS implements Solver{
 
 	
 	@Override
 	public Solution solve(Problem problem) {
-		State s = new State((Matrix) problem);
+		State s = new PipeState((Matrix) problem);
 		
 		s.print();
 		System.out.println("**************Starting PGS*****************");
@@ -33,7 +36,7 @@ public class PGS implements Solver{
 		System.out.println("**************PGS DFS*****************");
 		printList(list2);
 		
-		Solution ps = new PipeSolution(list2,s);
+		Solution ps = new PipeSolution(list,s);
 		return ps;
 	}
 
@@ -66,9 +69,9 @@ public class PGS implements Solver{
 			Matrix mat = new Matrix(file);
 			//mat.print();
 			Matrix mat2 = new Matrix(file2);
-			State s = new State(mat);
+			PipeState s = new PipeState(mat2);
 			PGS pgs = new PGS();
-			pgs.solve(mat);
+			pgs.solve(mat2);
 			
 		} catch (MatrixException e) {
 			e.printStackTrace();

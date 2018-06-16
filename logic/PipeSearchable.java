@@ -14,7 +14,7 @@ public class PipeSearchable implements Searchable {
 	public PipeSearchable(State s) 
 	{
 		this.firstState = s;
-		tracker = new int[s.getState().getRows()][s.getState().getCols()];
+		tracker = new int[((Matrix) s.getproblem()).getRows()][((Matrix) s.getproblem()).getCols()];
 		comp = new StateComperator();
 	}
 	
@@ -51,7 +51,7 @@ public class PipeSearchable implements Searchable {
 	}
 	
 	private void updateTracker(State s) {
-		Location loc = s.location;
+		Location loc = s.getLocation();
 		tracker[loc.getI()][loc.getJ()] = 1;
 	}
 
@@ -80,7 +80,7 @@ public class PipeSearchable implements Searchable {
 	
 	private boolean allReadyVisited(State s)
 	{
-		Location loc = s.location;
+		Location loc = s.getLocation();
 		if(tracker[loc.getI()][loc.getJ()] == 1)
 			return true;
 		return false;
@@ -93,23 +93,23 @@ public class PipeSearchable implements Searchable {
 	    try {
 			Matrix mat = new Matrix(file);
 			//mat.print();
-			State s = new State(mat);
+			PipeState s = new PipeState(mat);
 			
 			System.out.println(s.toString());
 			PipeSearchable ps = new PipeSearchable(s);
-			ArrayList<State> list =ps.getAllPossibleStates(ps.firstState);
+			ArrayList<State> list =ps.getAllPossibleStates((PipeState) ps.firstState);
 			} catch (MatrixException e) {
 			e.printStackTrace();
 		}
 	}
 
 
-	public State getFirstState() {
-		return firstState;
+	public PipeState getFirstState() {
+		return (PipeState) firstState;
 	}
 
 
-	public void setFirstState(State firstState) {
+	public void setFirstState(PipeState firstState) {
 		this.firstState = firstState;
 	}
 

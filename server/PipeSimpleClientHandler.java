@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import exceptions.MatrixException;
 import logic.Matrix;
 import logic.Problem;
+import logic.Solution;
 import managment.CacheManager;
 import managment.FileCacheManager;
 import managment.PGS;
-import managment.Solution;
+
 import managment.Solver;
 
 public class PipeSimpleClientHandler implements ClientHandler {

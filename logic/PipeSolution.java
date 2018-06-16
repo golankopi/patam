@@ -1,8 +1,7 @@
-package managment;
+package logic;
 
 import java.util.ArrayList;
 
-import logic.State;
 import util.Dictionary;
 
 public class PipeSolution implements Solution {
@@ -23,7 +22,7 @@ public class PipeSolution implements Solution {
 		for(State st: list)
 		{
 			char wanted = st.getLocation().getValue();
-			char current = s.getState().getValue(st.getLocation().getI(),st.getLocation().getJ());
+			char current = ((Matrix) s.getproblem()).getValue(st.getLocation().getI(),st.getLocation().getJ());
 			//System.out.println("old val:" + current);
 			//System.out.println("new val:" + wanted);
 			int rightRotation = dic.getRotationRight(current,wanted);

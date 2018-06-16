@@ -108,8 +108,8 @@ public class BFS implements Searcher {
 			Matrix mat = new Matrix(file);
 			//mat.print();
 			Matrix mat2 = new Matrix(file2);
-			State s = new State(mat);
-			State t = new State(mat2);
+			PipeState s = new PipeState(mat);
+			PipeState t = new PipeState(mat2);
 			//System.out.println(s.equals(t));
 			//System.out.println(s.toString());
 			PipeSearchable ps = new PipeSearchable(s);
