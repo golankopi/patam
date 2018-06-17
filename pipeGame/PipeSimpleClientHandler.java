@@ -1,4 +1,4 @@
-package server;
+package pipeGame;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,9 +13,8 @@ import logic.Problem;
 import logic.Solution;
 import managment.CacheManager;
 import managment.FileCacheManager;
-import managment.PGS;
-
 import managment.Solver;
+import server.ClientHandler;
 
 public class PipeSimpleClientHandler implements ClientHandler {
 	

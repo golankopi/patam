@@ -1,10 +1,14 @@
-package logic;
+package pipeGame;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Comparator;
 
 import exceptions.MatrixException;
+import logic.Location;
+import logic.Matrix;
+import logic.Searchable;
+import logic.State;
 
 public class PipeSearchable implements Searchable {
 	private State firstState;
@@ -128,12 +132,11 @@ public class PipeSearchable implements Searchable {
 
 		@Override
 		public int compare(State o1, State o2) {
-			if(o1.equals(o2))
-				return 0;
+			if(o1.getCost() >= o2.getCost())
+				return 1;
 			else 
 				return -1;
 		}
-		
 	}
 
 

@@ -19,6 +19,9 @@ public interface State {
 
 	public Problem getproblem();
 
+	public int getCost();
+
+	public int genCost();
 
 
 

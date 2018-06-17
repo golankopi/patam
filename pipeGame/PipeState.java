@@ -1,9 +1,14 @@
-package logic;
+package pipeGame;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
 import exceptions.MatrixException;
+import logic.GeneralState;
+import logic.Location;
+import logic.Matrix;
+import logic.Problem;
+import logic.State;
 import util.Dictionary;
 
 public class PipeState extends GeneralState {
@@ -15,6 +20,7 @@ public class PipeState extends GeneralState {
 		this.location = new Location(((Matrix) problem).getStart().getI(),((Matrix) problem).getStart().getJ(),((Matrix) problem).getStart().getValue())  ;
 		this.cameFrom = null;
 		fathers = new HashSet<String>();
+		setCost(genCost());
 	}
 
 	public PipeState(PipeState s,Location newlocation){ // CTOR for first state
@@ -28,6 +34,7 @@ public class PipeState extends GeneralState {
 		this.location = new Location(newlocation.getI(),newlocation.getJ(),newlocation.getValue());
 		((Matrix) problem).setLocation(newlocation);
 		fathers = new HashSet<String>(s.fathers);
+		setCost(genCost());
 		//this.setCameFrom(s);
 	}
 
@@ -253,6 +260,19 @@ public class PipeState extends GeneralState {
 		String s = "[" + this.location.getI() + this.location.getJ() + "]";
 
 		return s;
+	}
+
+	@Override
+	public int genCost() {
+		Location curLoc =  this.getLocation();
+		Location endLoc = ((Matrix) this.problem).getEnd();
+		return curLoc.diff(endLoc) + genLocationCost();
+	}
+
+	private int genLocationCost() {
+		char papaDir = getParentDiraction();
+		
+		return 0;
 	}
 
 

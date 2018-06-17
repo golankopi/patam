@@ -1,7 +1,10 @@
-package logic;
+package pipeGame;
 
 import java.util.ArrayList;
 
+import logic.Matrix;
+import logic.Solution;
+import logic.State;
 import util.Dictionary;
 
 public class PipeSolution implements Solution {

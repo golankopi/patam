@@ -34,6 +34,8 @@ public class PipeMatrixConverter implements MatrixConvertor {
 			}
 		}
 		this.matrix = matrix;
+		start = findStartLocation(this.matrix, rows, cols);
+		end = findEndLocation(this.matrix, rows, cols);
 		return this.matrix ;
 	}
 

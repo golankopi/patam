@@ -1,4 +1,4 @@
-package logic;
+package logic.algo;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -7,6 +7,12 @@ import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 import exceptions.MatrixException;
+import logic.Matrix;
+import logic.Searchable;
+import logic.Searcher;
+import logic.State;
+import pipeGame.PipeSearchable;
+import pipeGame.PipeState;
 
 public class BFS implements Searcher {
 	

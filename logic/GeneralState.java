@@ -9,14 +9,14 @@ public abstract class GeneralState implements State {
 	protected Problem problem;
 	protected State cameFrom;	
 	protected HashSet<String> fathers ; // a set of states already evaluated
-	protected double cost = 0;
+	protected int cost = 0;
 	protected boolean visited = false;
 
-	public double getCost() {
+	public int getCost() {
 		return cost;
 	}
 
-	public void setCost(double cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
 

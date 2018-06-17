@@ -16,6 +16,7 @@ public class Matrix implements Problem {
 	private Location start;
 	private Location end;
 	private char[][]matrix = null;
+	
 	public Matrix(String level) throws MatrixException {
 		String[] spllitedLevel = level.split(System.lineSeparator());
 		rows = spllitedLevel.length;
@@ -35,8 +36,8 @@ public class Matrix implements Problem {
 				this.matrix[i][j] = line.charAt(j);
 			}
 		}
-		start = findStartLocation(this.matrix, rows, cols);
-		end = findEndLocation(this.matrix, rows, cols);
+		start = new Location(findStartLocation(this.matrix, rows, cols));
+		end = new Location(findEndLocation(this.matrix, rows, cols));
 		
 		System.out.println("BEFORE CONSTUCTOR END: ");
 		start.print();

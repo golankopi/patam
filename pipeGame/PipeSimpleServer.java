@@ -1,4 +1,4 @@
-package server;
+package pipeGame;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+
+import server.ClientHandler;
+import server.Server;
 
 public class PipeSimpleServer implements Server {
     final static int TCP_SERVER_PORT = 32;

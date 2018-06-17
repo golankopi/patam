@@ -5,6 +5,7 @@ public class Location {
 	private int j;
 	private char value;
 	
+
 	public Location(int i,int j,char value)
 	{
 		this.i = i;
@@ -58,6 +59,11 @@ public class Location {
 	public Location getStart(Matrix state) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public int diff(Location l2)
+	{
+		return Math.abs(this.getI() - l2.getI()) + Math.abs(this.getJ() - l2.getJ());
 	}
 	
 }
