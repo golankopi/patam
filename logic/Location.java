@@ -23,6 +23,10 @@ public class Location {
 		this.i = i;
 		this.j = j;
 	}
+	public Location() 
+	{
+	}
+	
 	public char getValue() {
 		return value;
 	}
