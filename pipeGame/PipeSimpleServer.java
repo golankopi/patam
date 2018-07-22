@@ -11,10 +11,17 @@ import server.ClientHandler;
 import server.Server;
 
 public class PipeSimpleServer implements Server {
-    final static int TCP_SERVER_PORT = 32;
+    static int TCP_SERVER_PORT = 32;
     private ServerSocket serverSocket;
     private boolean stop = false;
 	
+    public PipeSimpleServer(int port) {
+    	this.TCP_SERVER_PORT = port;
+    }
+    public PipeSimpleServer() {
+    	this.TCP_SERVER_PORT = 32;
+    }
+    
     @Override
     public void start(ClientHandler clientHandler){
     	new Thread(() -> {

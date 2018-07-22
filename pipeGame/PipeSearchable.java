@@ -73,7 +73,8 @@ public class PipeSearchable implements Searchable {
 		State papa = n.getCameFrom();
 		while(papa != null)
 		{
-			list.add(n);
+			if(n.getLocation().getValue() !='g')
+				list.add(n);
 			n = papa;
 			papa = n.getCameFrom();
 			//System.out.println("this is n" + n.toString());

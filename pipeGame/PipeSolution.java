@@ -30,6 +30,7 @@ public class PipeSolution implements Solution {
 			//System.out.println("new val:" + wanted);
 			int rightRotation = dic.getRotationRight(current,wanted);
 			String temp = st.getLocation().getI()+","+st.getLocation().getJ()+"," + rightRotation;
+			
 			System.out.println(temp+","+wanted);
 			solutionList.add(temp);
 		}

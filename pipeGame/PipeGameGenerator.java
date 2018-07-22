@@ -17,7 +17,7 @@ public class PipeGameGenerator {
 		game.setRows(size);
 		game.setCols(size);
 		boolean lvlIsFine = false;
-		;
+		
 		while(!lvlIsFine){
 			char[][] mat = generateRandomMatrix(size);
 			game.setMatrix(mat);
