@@ -27,6 +27,7 @@ public abstract class GeneralState implements State {
 	public void setCameFrom(State cameFrom) {
 		this.cameFrom = cameFrom;
 		this.fathers.add(cameFrom.toString());
+		//System.out.println("Came----------------:" + cameFrom.toString());
 	}
 	
 	public boolean isVisited() {
@@ -63,8 +64,8 @@ public abstract class GeneralState implements State {
 	
 	public void print()
 	{
-		problem.print();
-		location.print();
+		//problem.print();
+		//location.print();
 	}
 
 }

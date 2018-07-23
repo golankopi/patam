@@ -4,7 +4,7 @@ public class Dictionary {
 	private boolean valid = false;
 	public Dictionary()
 	{
-		//System.out.println("New dictionary created");
+		////System.out.println("New dictionary created");
 	}
 	
 	private char getType(char c)
@@ -37,7 +37,7 @@ public class Dictionary {
 		{
 			int a = getDictionaryIntVal(current);
 			int b = getDictionaryIntVal(wanted);
-			//System.out.println("current:" + current + "\nwanted:" + wanted +"\nrotation: " +  (4-(a-b))%4 +"\n------");
+			////System.out.println("current:" + current + "\nwanted:" + wanted +"\nrotation: " +  (4-(a-b))%4 +"\n------");
 			return (4-(a-b))%4;
 		}
 		if(getType(current) == '-')
@@ -48,7 +48,7 @@ public class Dictionary {
 	}
 	public boolean validate(char c1,char tryToConnect,char dir)
 	{
-		//System.out.println("validate: validate("+c1+","+tryToConnect+","+dir+")");
+		////System.out.println("validate: validate("+c1+","+tryToConnect+","+dir+")");
 		switch(c1)
 		{
 			case ' ':
@@ -110,7 +110,7 @@ public class Dictionary {
 				else if(dir == 'r') valid = n12.right(tryToConnect);
 				break;
 		}
-		//System.out.println("Vlidated: " + valid);
+		////System.out.println("Vlidated: " + valid);
 		return valid;
 	}
 
@@ -235,8 +235,8 @@ public class Dictionary {
 	public static void main(String[]args)
 	{
 		Dictionary dic = new Dictionary();
-		System.out.println(dic.validate('s', 'L', 'd'));
-		System.out.println(dic.validate('s', '7', 'd'));;
+		//System.out.println(dic.validate('s', 'L', 'd'));
+		//System.out.println(dic.validate('s', '7', 'd'));;
 
 	}
 	

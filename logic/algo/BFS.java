@@ -32,10 +32,10 @@ public class BFS implements Searcher {
 		while(!open.isEmpty())
 		{
 			State n = open.poll();
-			System.out.println("we pooled n from q");
+			//System.out.println("we pooled n from q");
 			n.print();
 
-			System.out.println("!closed.contains(n.toString()) : " + !closed.contains(n.toString()));
+			//System.out.println("!closed.contains(n.toString()) : " + !closed.contains(n.toString()));
 			if(!closed.contains(n.toString() ) || !n.isVisited()){
 				//closed.add(n.toString());
 				n.setVisited(true);
@@ -43,30 +43,30 @@ public class BFS implements Searcher {
 				if(searchable.isGoal(n)) //3 
 				{
 					n.getLocation().print();
-					System.out.println("We got to g");
+					//System.out.println("We got to g");
 					ArrayList<State> l1= searchable.backTrack(n);
 					//if(l1.get(l1.size()-1).getCameFrom() == null)
 					return l1;
 				}
 				list = searchable.getAllPossibleStates(n); // 4
-				System.out.println("Getting successors");
+				//System.out.println("Getting successors");
 				printList(list);
 				for(State s : list)
 				{
-					System.out.println("for:" + s.toString() + " !inClosedList(s) && !open.contains(s): " + (!inClosedList(s) && !open.contains(s)));
+					//System.out.println("for:" + s.toString() + " !inClosedList(s) && !open.contains(s): " + (!inClosedList(s) && !open.contains(s)));
 					if(!inClosedList(s) && !open.contains(s)){ //5.a
 						s.setCameFrom(n);
-						System.out.print("going to print node location: " ); s.getLocation().print();
-						System.out.print("going to print father location: " ); n.getLocation().print();
+						//System.out.print("going to print node location: " ); s.getLocation().print();
+						//System.out.print("going to print father location: " ); n.getLocation().print();
 						open.add(s);
 						counter++;
-						System.out.println("adding s: " + s.toString());
+						//System.out.println("adding s: " + s.toString());
 					}
 				}
 				
 			}
 		}
-		System.out.println("BFS done!");
+		//System.out.println("BFS done!");
 		return null;
 	}
   	
@@ -84,7 +84,7 @@ public class BFS implements Searcher {
 			{
 				s1.print();
 				try{
-					System.out.println("p:");
+					//System.out.println("p:");
 					s1.getCameFrom().getLocation().print();
 				}catch(Exception e){}
 			}

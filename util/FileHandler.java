@@ -9,13 +9,13 @@ public class FileHandler {
 	
 	public static void printFile(File file)
 	{
-		//System.out.println("Here in file printer");
+		////System.out.println("Here in file printer");
 		try {
 			 BufferedReader br = new BufferedReader(new FileReader(file));
 			 String line = null;
 			 while ((line = br.readLine()) != null) 
 			 {
-			   System.out.println(line);
+			   //System.out.println(line);
 			 }
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -25,7 +25,7 @@ public class FileHandler {
 	
 	public static String getFirstRow(File file)
 	{
-		//System.out.println("Here in file getFirstRow");
+		////System.out.println("Here in file getFirstRow");
 		try {
 			 BufferedReader br = new BufferedReader(new FileReader(file));
 			 String line = "";
@@ -67,7 +67,7 @@ public class FileHandler {
 	
 	public static int getNumRows(File file)
 	{
-		//System.out.println("Here in file getNumRows");
+		////System.out.println("Here in file getNumRows");
 		try {
 			 BufferedReader br = new BufferedReader(new FileReader(file));
 			 String line = "";
@@ -90,7 +90,7 @@ public class FileHandler {
 	{
 	    File file = new File("C:\\test\\level1.txt");
 	    printFile(file);
-	    System.out.println(getFirstRow(file).length());
-	    System.out.println(getNumRows(file));
+	    //System.out.println(getFirstRow(file).length());
+	    //System.out.println(getNumRows(file));
 	}
 }

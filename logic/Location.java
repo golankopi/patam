@@ -51,7 +51,7 @@ public class Location {
 	
 	public void print()
 	{
-		System.out.println("["+this.getI()+","+this.getJ()+"] and thier value=" + this.value);
+		//System.out.println("["+this.getI()+","+this.getJ()+"] and thier value=" + this.value);
 	}
 	
 	@Override

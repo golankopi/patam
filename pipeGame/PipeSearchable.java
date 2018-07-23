@@ -100,7 +100,7 @@ public class PipeSearchable implements Searchable {
 			//mat.print();
 			PipeState s = new PipeState(mat);
 			
-			System.out.println(s.toString());
+			//System.out.println(s.toString());
 			PipeSearchable ps = new PipeSearchable(s);
 			ArrayList<State> list =ps.getAllPossibleStates((PipeState) ps.firstState);
 			} catch (MatrixException e) {
@@ -128,17 +128,7 @@ public class PipeSearchable implements Searchable {
 		this.tracker = tracker;
 	}
 
-	protected class StateComperator implements Comparator<State>
-	{
 
-		@Override
-		public int compare(State o1, State o2) {
-			if(o1.getCost() >= o2.getCost())
-				return 1;
-			else 
-				return -1;
-		}
-	}
 
 
 }

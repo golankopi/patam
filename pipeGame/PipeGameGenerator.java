@@ -33,7 +33,7 @@ public class PipeGameGenerator {
 				lvlIsFine = true;
 		}
 		game.print();
-		System.out.println("game has been generated!!!!!");
+		//System.out.println("game has been generated!!!!!");
 		return null;
 	}
 	
@@ -74,7 +74,7 @@ public class PipeGameGenerator {
 			{
 				System.out.print(mat[i][j]);
 			}
-			System.out.println("");
+			//System.out.println("");
 		}
 	}
 	

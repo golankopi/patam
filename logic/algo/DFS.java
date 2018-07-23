@@ -29,28 +29,28 @@ public class DFS implements Searcher {
 		{
 			State v = open.pop();
 			//visited.add(v.toString());
-			System.out.println("adding to Visited list: " + v.toString());
+			//System.out.println("adding to Visited list: " + v.toString());
 			
-			System.out.println("This is V that we poped");
+			//System.out.println("This is V that we poped");
 			v.print();
 			if(!visited.contains(v))
 			{
 				if(searchable.isGoal(v))
 				{
-					System.out.println("done! goal");
+					//System.out.println("done! goal");
 					return searchable.backTrack(v);
 				}
 				ArrayList<State> list = new ArrayList<State>();
 				list = v.getNeighbors();
-				System.out.println("This is v's neighbors");
+				//System.out.println("This is v's neighbors");
 				
 				for(State s:list)
 				{
 					if(!visited.contains(s.toString())){
 						s.setCameFrom(v);
-						System.out.println("p: " + v.getLocation().toString());
+						//System.out.println("p: " + v.getLocation().toString());
 						open.push(s);
-						System.out.println("me:" + s	.getLocation().toString());
+						//System.out.println("me:" + s	.getLocation().toString());
 					}
 				}
 			}

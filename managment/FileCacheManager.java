@@ -19,10 +19,10 @@ public class FileCacheManager implements CacheManager {
 
 	@Override
 	public void save(String problem) throws IOException {
-		System.out.println("my problem is "+ problem );
+		//System.out.println("my problem is "+ problem );
 		List<String> lines = Arrays.asList(problem.split(System.lineSeparator()));
-		System.out.println("my lines are "+ lines );
-		System.out.println("my lines length "+ lines.size() );
+		//System.out.println("my lines are "+ lines );
+		//System.out.println("my lines length "+ lines.size() );
 		Path file = Paths.get(key + ".txt");
 		Files.write(file, lines, Charset.forName("ASCII"));
 	}

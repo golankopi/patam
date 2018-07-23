@@ -40,14 +40,14 @@ public class Matrix implements Problem {
 				throw new MatrixException("Problem initiate matrix (line is null Problem) line:" + i); 
 			for(int j = 0; j < cols; j++)
 			{
-				System.out.println("got a char of "+ line.charAt(j));
+				//System.out.println("got a char of "+ line.charAt(j));
 				this.matrix[i][j] = line.charAt(j);
 			}
 		}
 		start = new Location(findStartLocation(this.matrix, rows, cols));
 		end = new Location(findEndLocation(this.matrix, rows, cols));
 		
-		System.out.println("BEFORE CONSTUCTOR END: ");
+		//System.out.println("BEFORE CONSTUCTOR END: ");
 		start.print();
 		end.print();
 	}
@@ -155,9 +155,9 @@ public class Matrix implements Problem {
 		{
 			for(int j =0 ; j < cols; j++)
 			{
-				System.out.print(matrix[i][j]);
+				//System.out.print(matrix[i][j]);
 			}
-			System.out.println("");
+			//System.out.println("");
 		}
 	}
 

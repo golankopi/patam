@@ -49,7 +49,7 @@ public class DoublyLinkedListImpl<E> {
         head = tmp;
         if(tail == null) { tail = tmp;}
         size++;
-        System.out.println("adding: "+element);
+        //System.out.println("adding: "+element);
     }
      
     /**
@@ -63,7 +63,7 @@ public class DoublyLinkedListImpl<E> {
         tail = tmp;
         if(head == null) { head = tmp;}
         size++;
-        System.out.println("adding: "+element);
+        //System.out.println("adding: "+element);
     }
      
     /**
@@ -71,10 +71,10 @@ public class DoublyLinkedListImpl<E> {
      */
     public void iterateForward(){
          
-        System.out.println("iterating forward..");
+        //System.out.println("iterating forward..");
         Node tmp = head;
         while(tmp != null){
-            System.out.println(tmp.element);
+            //System.out.println(tmp.element);
             tmp = tmp.next;
         }
     }
@@ -84,10 +84,10 @@ public class DoublyLinkedListImpl<E> {
      */
     public void iterateBackward(){
          
-        System.out.println("iterating backword..");
+        //System.out.println("iterating backword..");
         Node tmp = tail;
         while(tmp != null){
-            System.out.println(tmp.element);
+            //System.out.println(tmp.element);
             tmp = tmp.prev;
         }
     }
@@ -102,7 +102,7 @@ public class DoublyLinkedListImpl<E> {
         head = head.next;
         head.prev = null;
         size--;
-        System.out.println("deleted: "+tmp.element);
+        //System.out.println("deleted: "+tmp.element);
         return tmp.element;
     }
      
@@ -116,7 +116,7 @@ public class DoublyLinkedListImpl<E> {
         tail = tail.prev;
         tail.next = null;
         size--;
-        System.out.println("deleted: "+tmp.element);
+        //System.out.println("deleted: "+tmp.element);
         return tmp.element;
     }
      

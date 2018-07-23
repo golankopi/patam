@@ -37,16 +37,16 @@ public class PipeSimpleServer implements Server {
     private void startServer(ClientHandler clientHandler) throws IOException {
         serverSocket = new ServerSocket(PipeSimpleServer.TCP_SERVER_PORT);
         serverSocket.setSoTimeout(1000);
-        System.out.println("Server connected - waiting");
+        //System.out.println("Server connected - waiting");
 
         while (!stop) {
             try {
                 Socket aClient = serverSocket.accept();
-                System.out.println("client connected");
+                //System.out.println("client connected");
                 clientHandler.handle(aClient.getInputStream(), aClient.getOutputStream());
                 aClient.close();
             } catch (SocketTimeoutException e) {
-//                System.out.println("Client did not connect...");
+//                //System.out.println("Client did not connect...");
             }
         }
         serverSocket.close();
@@ -67,6 +67,6 @@ public class PipeSimpleServer implements Server {
 			e.printStackTrace();
 		}
         s.stop();
-        System.out.println("Closed server");
+        //System.out.println("Closed server");
 	}
 }

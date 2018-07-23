@@ -45,12 +45,12 @@ public class PipeState extends GeneralState {
 		ArrayList<PipeState> left = new ArrayList<PipeState>();
 		ArrayList<PipeState> right = new ArrayList<PipeState>();
 		Character myParent = getParentDiraction();
-		System.out.println("my p:" + myParent);
+		//System.out.println("my p:" + myParent);
 		if(!(myParent.equals('u')))up = getPosibleUp();
 		if(!(myParent.equals('d')))down = getPosibleDown();
 		if(!(myParent.equals('l')))left = getPosibleLeft();
 		if(!(myParent.equals('r')))right = getPosibleRight();
-		System.out.println(fathers.toString());
+		//System.out.println(fathers.toString());
 		for(PipeState s : up)
 		{
 			if(!fathers.contains(s.toString()))
@@ -96,7 +96,7 @@ public class PipeState extends GeneralState {
 	
 	private ArrayList<PipeState> getPosibleUp()
 	{
-		//System.out.println("Checking neighbors UP");
+		////System.out.println("Checking neighbors UP");
 		ArrayList<PipeState> list = new ArrayList<PipeState>();
 		Dictionary dic = new Dictionary();
 		char current = location.getValue();
@@ -135,7 +135,7 @@ public class PipeState extends GeneralState {
 	{
 		Dictionary dic = new Dictionary();
 		char current = location.getValue();
-		//System.out.println("Checking neighbors Down");
+		////System.out.println("Checking neighbors Down");
 		ArrayList<PipeState> list = new ArrayList<PipeState>();
 		//location.print();
 		if(location.getI() < ((Matrix) problem).getRows()-1)
@@ -144,7 +144,7 @@ public class PipeState extends GeneralState {
 			//newLocation.print();
 			PipeState down = new PipeState(this,newLocation);
 			char newVal = newLocation.getValue();
-			//System.out.println("in down new val = "  + newVal);
+			////System.out.println("in down new val = "  + newVal);
 			if(newVal == 'F' || newVal == '7' ||newVal == 'J' || newVal == 'L'  )
 			{
 				Location l2 = new Location(newLocation.getI(),newLocation.getJ(),'L');
@@ -176,14 +176,14 @@ public class PipeState extends GeneralState {
 		Dictionary dic = new Dictionary();
 		char current = location.getValue();
 
-		//System.out.println("Checking neighbors Right");
+		////System.out.println("Checking neighbors Right");
 		ArrayList<PipeState> list = new ArrayList<PipeState>();
 		if(location.getJ() < ((Matrix) problem).getCols()-1)
 		{
 			Location newLocation = new Location(location.getI(),location.getJ()+1,((Matrix) getproblem()).getValue(location.getI(),location.getJ()+1));
-			//System.out.println("in right mylocation: "  );
+			////System.out.println("in right mylocation: "  );
 			//location.print();
-			//System.out.println("in right newlocation: "  );
+			////System.out.println("in right newlocation: "  );
 			//newLocation.print();
 			PipeState right = new PipeState(this,newLocation);
 			char newVal = newLocation.getValue();
@@ -217,7 +217,7 @@ public class PipeState extends GeneralState {
 		Dictionary dic = new Dictionary();
 		char current = location.getValue();
 		
-		//System.out.println("Checking neighbors Left");
+		////System.out.println("Checking neighbors Left");
 		ArrayList<PipeState> list = new ArrayList<PipeState>();
 		if(location.getJ() > 0)
 		{

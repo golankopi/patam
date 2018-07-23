@@ -59,7 +59,7 @@ public class PipeMatrixConverter implements MatrixConvertor {
 			{
 				System.out.print(matrix[i][j]);
 			}
-			System.out.println("");
+			//System.out.println("");
 		}
 	}
 	
@@ -72,7 +72,7 @@ public class PipeMatrixConverter implements MatrixConvertor {
 				if(matrix[i][j] == 's')
 					return new Location(i,j,'s');
 			}
-			//System.out.println("");
+			////System.out.println("");
 		}
 		return null;
 	}
@@ -86,7 +86,7 @@ public class PipeMatrixConverter implements MatrixConvertor {
 				if(matrix[i][j] == 'g')
 					return new Location(i,j,'g');
 			}
-			//System.out.println("");
+			////System.out.println("");
 		}
 		return null;
 	}

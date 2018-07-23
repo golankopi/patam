@@ -39,7 +39,7 @@ public class PipeSimpleClientHandler implements ClientHandler {
             e.printStackTrace();
         }
         
-        System.out.println(lines);
+        //System.out.println(lines);
         level = String.join(System.lineSeparator(), lines);
         //TODO change to a problem intead of matrix
     	Problem m;
@@ -72,15 +72,15 @@ public class PipeSimpleClientHandler implements ClientHandler {
 			}
         }
         else {
-        	System.out.println("Awesome! level found in cache!");
+        	//System.out.println("Awesome! level found in cache!");
         }
-        System.out.println("going to return:");
-        System.out.println(solvedLevel);
+        //System.out.println("going to return:");
+        //System.out.println(solvedLevel);
         
         for(String solvedLine : solvedLevel.split(System.lineSeparator())) {
         	outTC.println(solvedLine);
-            System.out.println("sending:");
-            System.out.println(solvedLine);
+            //System.out.println("sending:");
+            //System.out.println(solvedLine);
         }
         outTC.println("done");
         outTC.flush();

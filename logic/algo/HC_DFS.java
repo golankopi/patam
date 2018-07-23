@@ -21,7 +21,7 @@ public class HC_DFS implements Searcher {
 
 	@Override
 	public ArrayList<State> search(Searchable searchable) {
-		System.out.println("Starting DFS");
+		System.out.println("Starting HC_DFS");
 		visited = new HashSet<String>();
 		open = new Stack<State>();
 		open.push(searchable.getInitialState());
@@ -30,33 +30,33 @@ public class HC_DFS implements Searcher {
 		{
 			State v = open.pop();
 			//visited.add(v.toString());
-			System.out.println("adding to Visited list: " + v.toString());
+			//System.out.println("adding to Visited list: " + v.toString());
 			
-			System.out.println("This is V that we poped");
+			//System.out.println("This is V that we poped");
 			v.print();
 			if(!visited.contains(v))
 			{
 				if(searchable.isGoal(v))
 				{
-					System.out.println("done! goal");
+					//System.out.println("done! goal");
 					return searchable.backTrack(v);
 				}
 				ArrayList<State> list = new ArrayList<State>();
 				list = v.getNeighbors();
-				System.out.println("Printing list before reorer");
+				//System.out.println("Printing list before reorer");
 				printList(list);
-				System.out.println("Printing list After reorer");
+				//System.out.println("Printing list After reorer");
 				list.sort(searchable.getComp());//diffrence between dfs to 
 				printList(list);
-				System.out.println("This is v's neighbors");
+				//System.out.println("This is v's neighbors");
 				
 				for(State s:list)
 				{
 					if(!visited.contains(s.toString())){
 						s.setCameFrom(v);
-						System.out.println("p: " + v.getLocation().toString());
+						//System.out.println("p: " + v.getLocation().toString());
 						open.push(s);
-						System.out.println("me:" + s.getLocation().toString());
+						//System.out.println("me:" + s.getLocation().toString());
 					}
 				}
 			}
@@ -72,7 +72,7 @@ public class HC_DFS implements Searcher {
 			for(State s1: list)
 			{
 				s1.print();
-				System.out.println("----- cost: " + s1.getCost());
+				//System.out.println("----- cost: " + s1.getCost());
 				try{
 					//System.out.print("p:");
 					//s1.getCameFrom().getLocation().print();

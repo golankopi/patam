@@ -35,6 +35,12 @@ public class MainTrain {
 				{1,3,1,1,1},	
 		};
 		
+		byte[][] mazeData1={
+				{2,0,1},	
+				{0,0,0},	
+				{1,1,3},	
+		};
+		
 		Maze m=new Maze(mazeData);		
 		List<String> actions = TestSetter.solveMaze(m);
 		
