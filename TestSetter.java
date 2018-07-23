@@ -1,6 +1,8 @@
 package test;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -195,10 +197,12 @@ public class TestSetter {
 				System.out.println("Start Trace ----------------------------------------------------");
 				ArrayList<State> list = new ArrayList<State>();
 				State papa = n.getCameFrom();
+				list.add(goalState);
 				while(papa != null)
 				{
 					n = papa;
 					papa = n.getCameFrom();
+					list.add(n);
 					System.out.println(n.toString());
 					
 				}
@@ -230,12 +234,28 @@ public class TestSetter {
 		
 		//System.out.println("This is the maze obj that we get");
 		
-		ArrayList<State> list2 = new BFS().search(new GenericMazeSearchable());
-		list2 = new DFS().search(new GenericMazeSearchable());
-		list2 = new HC_Heap().search(new GenericMazeSearchable());
+		ArrayList<State> list = new BFS().search(new GenericMazeSearchable());
+		//list = new DFS().search(new GenericMazeSearchable());
+		//list = new HC_Heap().search(new GenericMazeSearchable());
+		
+		//System.out.println(list.size());
+		//System.out.println("Solution");
+		ArrayList<String> solution = new ArrayList<>();
+		for (int i=list.size() -1; i>0; i--)
+		{
+			int ti = list.get(i).getLocation().getI();
+			int tj = list.get(i).getLocation().getJ();
+			int ni = list.get(i-1).getLocation().getI();
+			int nj = list.get(i-1).getLocation().getJ();
+			
+			if(ni > ti) solution.add("DOWN");
+			if(ni < ti) solution.add("UP");
+			if(nj > tj) solution.add("RIGHT");
+			if(nj < tj) solution.add("LEFT");
+		}
 		
 		
-		return null;
+		return solution;
 	}
 
 }
